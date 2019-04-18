@@ -35,6 +35,11 @@ MAKU PAULINE MAZAKPE
 2. CREATE DATABASE hair_salon;
 3. CREATE TABLE clients (id serial PRIMARY KEY, name VARCHAR);
 4. CREATE DATABASE hair_salon_test WITH TEMPLATE hair_salon;
+5. CREATE TABLE stylists (id serial PRIMARY KEY, name varchar);
+6. DROP DATABASE hair_salon_test;
+7. CREATE DATABASE hair_salon_test WITH TEMPLATE hair_salon;
+
+
 
 ## SCREENSHOTS
 
