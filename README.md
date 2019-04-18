@@ -12,6 +12,8 @@ MAKU PAULINE MAZAKPE
 5. Junit 4
 6. Postgres
 7. psql
+8. sql2o
+9. postgresql
 
 ## Usage
 1. Clone this repo
