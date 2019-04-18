@@ -10,6 +10,8 @@ MAKU PAULINE MAZAKPE
 3. Gradle 4.10
 4. Spark Template Velocity
 5. Junit 4
+6. Postgres
+7. psql
 
 ## Usage
 1. Clone this repo
