@@ -28,6 +28,12 @@ public class Stylists {
     }
 
     public List<Client> getClient() {
+        try(Connection con = DB.sql2o.open()) {
+            String sql = "SELECT * FROM clients where stylistId=:id";
+            return con.createQuery(sql)
+                    .addParameter("id", this.id)
+                    .executeAndFetch(Client.class);
+        }
     }
 
     public static Stylists find(int id) {

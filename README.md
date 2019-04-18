@@ -38,6 +38,7 @@ MAKU PAULINE MAZAKPE
 5. CREATE TABLE stylists (id serial PRIMARY KEY, name varchar);
 6. DROP DATABASE hair_salon_test;
 7. CREATE DATABASE hair_salon_test WITH TEMPLATE hair_salon;
+8. ALTER TABLE clients ADD stylistsId int;
 
 
 

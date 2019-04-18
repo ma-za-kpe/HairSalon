@@ -4,6 +4,8 @@ import org.junit.Test;
 import org.sql2o.Connection;
 import org.sql2o.Sql2o;
 
+import java.util.Arrays;
+
 import static org.junit.Assert.*;
 
 public class StylistsTest {
@@ -15,7 +17,7 @@ public class StylistsTest {
 
     @After
     public void tearDown() {
-        try(Connection con = DB.sql2o.open()) {
+        try (Connection con = DB.sql2o.open()) {
             String deleteClientsQuery = "DELETE FROM clients *;";
             String deleteStylistsQuery = "DELETE FROM stylists *;";
             con.createQuery(deleteClientsQuery).executeUpdate();
@@ -59,7 +61,7 @@ public class StylistsTest {
 
     @Test
     public void getId_categoriesInstantiateWithAnId_1() {
-        Stylists testStylists= new Stylists("Luke");
+        Stylists testStylists = new Stylists("Luke");
         testStylists.save();
         assertTrue(testStylists.getId() > 0);
     }
@@ -71,6 +73,31 @@ public class StylistsTest {
         Stylists secondStylists = new Stylists("Luke");
         secondStylists.save();
         assertEquals(Stylists.find(secondStylists.getId()), secondStylists);
+    }
+
+    // save a stylistId into our clients table, thereby associating a Client with its Stylist
+
+    @Test
+    public void save_savesStylistIdIntoDB_true() {
+        Stylists myStylists = new Stylists("Macus");
+        myStylists.save();
+        Client myClient = new Client("Mama Tendo");
+        myClient.save();
+        Client savedClient = Client.find(myClient.getId());
+        assertEquals(savedClient.getStylistId(), myStylists.getId());
+    }
+
+
+    @Test
+    public void getTasks_retrievesALlTasksFromDatabase_tasksList() {
+        Stylists myStylists = new Stylists("Macus");
+        myStylists.save();
+        Client firstClient = new Client("Macus", myStylists.getId());
+        firstClient.save();
+        Client secondClient = new Client("Mama Tendo", myStylists.getId());
+        secondClient.save();
+        Client[] clients = new Client[]{firstClient, secondClient};
+        assertTrue(myStylists.getClient().containsAll(Arrays.asList(clients)));
     }
 
 }
