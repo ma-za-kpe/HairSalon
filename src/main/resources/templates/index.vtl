@@ -1,0 +1,53 @@
+
+<div class="row">
+<div class="col-sm">
+<h3><a href="/addTodoForm"><button type="submit" class="btn add btn-lg"> <p class="add-btn">ADD TODO</p> </button></a> </h3>
+</div>
+<div class="col-sm">
+<h3><a href="/stylists/new"><button type="submit" class="btn add btn-lg"> <p class="add-btn">ADD STYLIST</p> </button></a> </h3>
+</div>
+<div class="col-sm">
+<!-- Basic dropdown -->
+<button class="btn btn-lg add dropdown-toggle mr-4" type="button" data-toggle="dropdown"
+  aria-haspopup="true" aria-expanded="false" id='categoryId' name='categoryId' type='text'><p class="add-btn">SHOW STYLIST</p></button>
+
+<div class="dropdown-menu">
+#foreach($category in $categories)
+    <a class="dropdown-item" href="$category.getId()"><p class="add-btn">$category.getName()-$category.getId()</p></a>
+  #end
+</div>
+<!-- Basic dropdown --></div>
+</div>
+
+
+<div class="row">
+      <div class="col-sm">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col"><h2 class="header">Category Name</h2></th>
+            <th scope="col"><h2 class="header">Update</h2></th>
+            <th scope="col"><h2 class="header">Delete</h2></th>
+            <th scope="col"><h2 class="header">More...</h2></th>
+          </tr>
+        </thead>
+        <tbody>
+          #foreach($category in $categories)
+           <tr>
+            <td class="header">$category.getName()</td>
+            <td><a href="/categoriedit/$category.getId()"><button type="submit" class="btn add btn-lg "><p class="add-btn">Edit</p></button></a></td>
+            <td>
+             <form action="/categories/$category.getId()/delete" method="post">
+               <a href="/"><button type="submit" class="btn delete btn-lg">
+                 <p class="add-btn">Delete</p></button>
+               </a>
+             </form>
+          </tr>
+          #end
+        </tbody>
+      </table>
+      </div>
+    </div>
+</div>
+
+
