@@ -15,9 +15,11 @@ public class ClientTest {
 
     @After
     public void tearDown() {
-        try (Connection con = DB.sql2o.open()) {
-            String sql = "DELETE FROM clients *;";
-            con.createQuery(sql).executeUpdate();
+        try(Connection con = DB.sql2o.open()) {
+            String deleteClientsQuery = "DELETE FROM clients *;";
+            String deleteStylistsQuery = "DELETE FROM stylists *;";
+            con.createQuery(deleteClientsQuery).executeUpdate();
+            con.createQuery(deleteStylistsQuery).executeUpdate();
         }
     }
 
