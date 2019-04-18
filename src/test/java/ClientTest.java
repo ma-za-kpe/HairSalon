@@ -26,24 +26,24 @@ public class ClientTest {
     //compare objects we retrieve from the database with our code in the all() method
     @Test
     public void equals_returnsTrueIfDescriptionsAretheSame() {
-        Client firstClient = new Client("Mama Tendo");
-        Client secondClient = new Client("Morine");
+        Client firstClient = new Client("Mama Tendo", 1);
+        Client secondClient = new Client("Morine", 2);
         assertTrue(firstClient.equals(secondClient));
     }
 
     //save objects into our database
     @Test
     public void save_returnsTrueIfDescriptionsAretheSame() {
-        Client myClient = new Client("Mama Tendo");
+        Client myClient = new Client("Mama Tendo", 1);
         myClient.save();
         assertTrue(Client.all().get(0).equals(myClient));
     }
 
     @Test
     public void all_returnsAllInstancesOfTask_true() {
-        Client firstClient = new Client("Mama Tendo");
+        Client firstClient = new Client("Mama Tendo", 1);
         firstClient.save();
-        Client secondClient = new Client("Morine");
+        Client secondClient = new Client("Morine", 2);
         secondClient.save();
         assertEquals(true, Client.all().get(0).equals(firstClient));
         assertEquals(true, Client.all().get(1).equals(secondClient));
@@ -52,7 +52,7 @@ public class ClientTest {
     //testing the id
     @Test
     public void save_assignsIdToObject() {
-        Client myClient = new Client("Mama Tendo");
+        Client myClient = new Client("Mama Tendo", 1);
         myClient.save();
         Client savedClient = Client.all().get(0);
         assertEquals(myClient.getId(), savedClient.getId());
@@ -61,7 +61,7 @@ public class ClientTest {
     //test for getid
     @Test
     public void getId_tasksInstantiateWithAnID() {
-        Client myClient = new Client("Mama Tendo");
+        Client myClient = new Client("Mama Tendo", 1);
         myClient.save();
         assertTrue(myClient.getId() > 0);
     }
@@ -69,9 +69,9 @@ public class ClientTest {
     //finding specific objects
     @Test
     public void find_returnsTaskWithSameId_secondTask() {
-        Client firstClient = new Client("Oliver");
+        Client firstClient = new Client("Oliver", 1);
         firstClient.save();
-        Client secondClient = new Client("Mary");
+        Client secondClient = new Client("Mary", 2);
         secondClient.save();
         assertEquals(Client.find(secondClient.getId()), secondClient);
     }

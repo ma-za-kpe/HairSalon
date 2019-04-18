@@ -81,7 +81,7 @@ public class StylistsTest {
     public void save_savesStylistIdIntoDB_true() {
         Stylists myStylists = new Stylists("Macus");
         myStylists.save();
-        Client myClient = new Client("Mama Tendo");
+        Client myClient = new Client("Mama Tendo", 1);
         myClient.save();
         Client savedClient = Client.find(myClient.getId());
         assertEquals(savedClient.getStylistId(), myStylists.getId());
