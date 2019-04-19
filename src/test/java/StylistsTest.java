@@ -125,6 +125,15 @@ public class StylistsTest {
         assertTrue(myStylists.getClient().containsAll(Arrays.asList(clients)));
     }
 
+    @Test
+    public void delete_deletesStylist_true() {
+        Stylists myStylist = new Stylists("Mow the lawn");
+        myStylist.save();
+        int myStylistId = myStylist.getId();
+        myStylist.delete();
+        assertEquals(null, Client.find(myStylistId));
+    }
+
 //    //retrieve all clients saved into a specific stylist
 //    @Test
 //    public void getClients_retrievesALlClientsFromDatabase_ClientList() {
