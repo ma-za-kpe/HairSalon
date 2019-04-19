@@ -12,8 +12,8 @@
   aria-haspopup="true" aria-expanded="false" id='categoryId' name='categoryId' type='text'><p class="add-btn">SHOW STYLIST</p></button>
 
 <div class="dropdown-menu">
-#foreach($category in $categories)
-    <a class="dropdown-item" href="$category.getId()"><p class="add-btn">$category.getName()-$category.getId()</p></a>
+#foreach($stylists in $stylists)
+    <a class="dropdown-item" href="$stylists.getId()"><p class="add-btn">$stylists.getName()-$stylists.getId()</p></a>
   #end
 </div>
 <!-- Basic dropdown --></div>
@@ -32,16 +32,18 @@
           </tr>
         </thead>
         <tbody>
-          #foreach($category in $categories)
+          #foreach($stylists in $stylists)
            <tr>
-            <td class="header">$category.getName()</td>
-            <td><a href="/categoriedit/$category.getId()"><button type="submit" class="btn add btn-lg "><p class="add-btn">Edit</p></button></a></td>
+            <td class="header">$stylists.getName()</td>
+            <td><a href="/stylistsdit/$stylists.getId()"><button type="submit" class="btn add btn-lg "><p class="add-btn">Edit</p></button></a></td>
             <td>
-             <form action="/categories/$category.getId()/delete" method="post">
+             <form action="/stylists/$stylists.getId()/delete" method="post">
                <a href="/"><button type="submit" class="btn delete btn-lg">
                  <p class="add-btn">Delete</p></button>
                </a>
              </form>
+              </td>
+              <td><a href="/stylistsdit/$stylists.getId()"><button type="submit" class="btn add btn-lg "><p class="add-btn">clients</p></button></a></td>
           </tr>
           #end
         </tbody>
