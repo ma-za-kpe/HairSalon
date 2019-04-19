@@ -46,7 +46,9 @@ public class App {
             String name = request.queryParams("name");
             Stylists newStylists = new Stylists(name);
             newStylists.save();
-            model.put("template", "templates/success.vtl");
+//            model.put("template", "templates/success.vtl");
+            String url = String.format("/", newStylists.getId());
+            response.redirect(url);
             return new ModelAndView(model, layout);
         }, new VelocityTemplateEngine());
 
@@ -66,6 +68,18 @@ public class App {
             Stylists stylists = Stylists.find(Integer.parseInt(request.params("stylists_id")));
             String name = request.queryParams("name");
             stylists.update(name);
+            String url = String.format("/", stylists.getId());
+            response.redirect(url);
+            return new ModelAndView(model, layout);
+        }, new VelocityTemplateEngine());
+
+        //delete a category
+        post("/stylists/:stylists_id/delete", (request, response) -> {
+            HashMap<String, Object> model = new HashMap<String, Object>();
+            Stylists stylists = Stylists.find(Integer.parseInt(request.params("stylists_id")));
+            stylists.delete();
+            model.put("stylists", stylists);
+//            model.put("template", "templates/success.vtl");
             String url = String.format("/", stylists.getId());
             response.redirect(url);
             return new ModelAndView(model, layout);
