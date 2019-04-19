@@ -1,4 +1,5 @@
-<h1 class="cat">$stylists.getName() clients:</h1>
+<h1 class="cat">NAME: $stylists.getName() </h1>
+<h1 class="cat">clients:</h1>
 
 <div class="row">
       <div class="col-sm">
@@ -15,7 +16,7 @@
           #foreach($client in $stylists.getClient())
            <tr>
             <td class="header">$client.getName()</td>
-            <td><a href="/stylists/$stylists.getId()/tasks/$task.getId()"><button type="submit" class="btn add btn-lg "><p class="add-btn">Edit</p></button></a></td>
+            <td><a href="/clientsdit/$client.getId()"><button type="submit" class="btn add btn-lg "><p class="add-btn">Edit</p></button></a></td>
             <td>
             <form action="/stylists/$client.getStylistId()/clients/$client.getId()/delete" method="post">
 
@@ -30,3 +31,18 @@
       </div>
     </div>
 </div>
+
+
+<div class="container">
+            <div class="row">
+                     <div class="col-sm ">
+                     </div>
+                     <div class="col-sm ">
+       <a href="/"><button type="submit" class="btn add btn-lg"><p class="add-btn">GO BACK HOME</p></button></a>
+                     </div>
+                     <div class="col-sm ">
+                     </div>
+                   </div>
+            </div>
+
+            77

@@ -124,5 +124,25 @@ public class App {
             return new ModelAndView(model, layout);
         }, new VelocityTemplateEngine());
 
+        //edit client
+        get("/clientsdit/:clients_id", (request, response) -> {
+            Map<String, Object> model = new HashMap<String, Object>();
+            Client client = Client.find(Integer.parseInt(request.params(":clients_id")));
+            model.put("client", client);
+            model.put("template", "templates/clientsEdit.vtl");
+            return new ModelAndView(model, layout);
+        }, new VelocityTemplateEngine());
+
+
+        //update clients by id
+        post("/clients/:clients_id", (request, response) -> {
+            Map<String, Object> model = new HashMap<String, Object>();
+            Client client = Client.find(Integer.parseInt(request.params("clients_id")));
+            String name = request.queryParams("name");
+            client.update(name);
+            String url = String.format("/", client.getId());
+            response.redirect(url);
+            return new ModelAndView(model, layout);
+        }, new VelocityTemplateEngine());
     }
 }

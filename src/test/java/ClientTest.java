@@ -60,7 +60,7 @@ public class ClientTest {
 
     //test for getid
     @Test
-    public void getId_tasksInstantiateWithAnID() {
+    public void getId_clientsInstantiateWithAnID() {
         Client myClient = new Client("Mama Tendo", 1);
         myClient.save();
         assertTrue(myClient.getId() > 0);
@@ -68,12 +68,21 @@ public class ClientTest {
 
     //finding specific objects
     @Test
-    public void find_returnsTaskWithSameId_secondTask() {
+    public void find_returnsClientWithSameId_secondClient() {
         Client firstClient = new Client("Oliver", 1);
         firstClient.save();
         Client secondClient = new Client("Mary", 2);
         secondClient.save();
         assertEquals(Client.find(secondClient.getId()), secondClient);
+    }
+
+    //update stylist
+    @Test
+    public void update_updatesClientName_true() {
+        Client myClient= new Client("Mow the lawn", 1);
+        myClient.save();
+        myClient.update("Take a nap");
+        assertEquals("Take a nap", Client.find(myClient.getId()).getName());
     }
 
 }
