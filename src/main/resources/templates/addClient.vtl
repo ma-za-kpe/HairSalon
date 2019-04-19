@@ -1,0 +1,21 @@
+<!-- Default form login -->
+<form class="text-center border border-light p-5" action="/addform" method="post">
+
+    <p class="h4 mb-4">Todo Details</p>
+
+    <label for="stylistid" class="add-btn">Select a List</label>
+    <select class="browser-default custom-select" id='stylistid' name='stylistid' type='text'>
+      <option selected>Stylists select menu</option>
+       #foreach($stylists in $stylists)
+              <option value="$stylists.getId()">$stylists.getName()</option>
+            #end
+    </select>
+
+    <!-- Name -->
+    <input type="client" id="client" name="client" id="defaultLoginFormEmail" class="form-control mb-4" >
+
+    <!-- Sign in button -->
+    <button class="btn add btn-block my-4" type="submit">Add Client</button>
+
+</form>
+<!-- Default form login -->

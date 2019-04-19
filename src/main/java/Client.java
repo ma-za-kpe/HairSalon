@@ -5,11 +5,11 @@ import java.util.List;
 public class Client {
     private String name;
     private int id;
-    private int stylistId;
+    private int stylistid;
 
-    public Client(String name, int stylistId) {
+    public Client(String name, int stylistid) {
         this.name = name;
-        this.stylistId = stylistId;
+        this.stylistid = stylistid;
     }
 
     public String getName() {
@@ -21,7 +21,7 @@ public class Client {
     }
 
     public int getStylistId() {
-        return stylistId;
+        return stylistid;
     }
 
     public static Client find(int id) {
@@ -58,7 +58,7 @@ public class Client {
             String sql = "INSERT INTO clients(name, stylistId) VALUES (:name, :stylistId)";
             this.id = (int) con.createQuery(sql, true)
                     .addParameter("name", this.name)
-                    .addParameter("stylistId", this.stylistId)
+                    .addParameter("stylistId", this.stylistid)
                     .executeUpdate()
                     .getKey();
         }

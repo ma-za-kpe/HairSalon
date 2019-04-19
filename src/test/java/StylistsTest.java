@@ -5,7 +5,9 @@ import org.sql2o.Connection;
 import org.sql2o.Sql2o;
 
 import java.util.Arrays;
+import java.util.Locale;
 
+import static junit.framework.TestCase.assertTrue;
 import static org.junit.Assert.*;
 
 public class StylistsTest {
@@ -108,5 +110,33 @@ public class StylistsTest {
         myStylist.update("Take a nap");
         assertEquals("Take a nap", Stylists.find(myStylist.getId()).getName());
     }
+
+    //get all task in on category
+    //retrieve all Tasks saved into a specific Category
+    @Test
+    public void getTasks_retrievesALlClientsFromDatabase_clientList() {
+        Stylists myStylists = new Stylists("Household chores");
+        myStylists.save();
+        Client firstClient = new Client("Mow the lawn", myStylists.getId());
+        firstClient.save();
+        Client secondClient = new Client("Do the dishes", myStylists.getId());
+        secondClient.save();
+        Client[] clients = new Client[] { firstClient, secondClient };
+        assertTrue(myStylists.getClient().containsAll(Arrays.asList(clients)));
+    }
+
+//    //retrieve all clients saved into a specific stylist
+//    @Test
+//    public void getClients_retrievesALlClientsFromDatabase_ClientList() {
+//        Locale.Stylists myStylists = new Locale.Stylists("Household chores");
+//        myStylists.save();
+//        Client firstClient = new Client("Mow the lawn", myStylists.getId());
+//        firstClient.save();
+//        Client secondClient = new Client("Do the dishes", myStylists.getId());
+//        secondClient.save();
+//        Client[] clients = new Client[] { firstClient, secondClient };
+//        assertTrue(myStylists.getClient().containsAll(Arrays.asList(clients)));
+//    }
+
 }
 
