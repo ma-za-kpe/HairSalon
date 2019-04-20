@@ -59,7 +59,7 @@ public class App {
             Stylists newStylists = new Stylists(name);
             newStylists.save();
 //            model.put("template", "templates/success.vtl");
-            String url = String.format("/", newStylists.getId());
+            String url = String.format("/index", newStylists.getId());
             response.redirect(url);
             return new ModelAndView(model, layout);
         }, new VelocityTemplateEngine());
@@ -80,7 +80,7 @@ public class App {
             Stylists stylists = Stylists.find(Integer.parseInt(request.params("stylists_id")));
             String name = request.queryParams("name");
             stylists.update(name);
-            String url = String.format("/", stylists.getId());
+            String url = String.format("/index", stylists.getId());
             response.redirect(url);
             return new ModelAndView(model, layout);
         }, new VelocityTemplateEngine());
@@ -92,7 +92,7 @@ public class App {
             stylists.delete();
             model.put("stylists", stylists);
 //            model.put("template", "templates/success.vtl");
-            String url = String.format("/", stylists.getId());
+            String url = String.format("/index", stylists.getId());
             response.redirect(url);
             return new ModelAndView(model, layout);
         }, new VelocityTemplateEngine());
@@ -148,7 +148,7 @@ public class App {
             Client client = Client.find(Integer.parseInt(request.params("clients_id")));
             String name = request.queryParams("name");
             client.update(name);
-            String url = String.format("/", client.getId());
+            String url = String.format("/index", client.getId());
             response.redirect(url);
             return new ModelAndView(model, layout);
         }, new VelocityTemplateEngine());
@@ -160,7 +160,7 @@ public class App {
             client.delete();
             model.put("client", client);
 //            model.put("template", "templates/success.vtl");
-            String url = String.format("/", client.getId());
+            String url = String.format("/index", client.getId());
             response.redirect(url);
             return new ModelAndView(model, layout);
         }, new VelocityTemplateEngine());
