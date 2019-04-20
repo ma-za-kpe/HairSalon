@@ -30,10 +30,18 @@ public class App {
          ***************************************/
 
         //get all stylist
-        get("/", (request, response) -> {
+        get("/index", (request, response) -> {
             Map<String, Object> model = new HashMap<String, Object>();
             model.put("stylists", Stylists.all());
             model.put("template", "templates/index.vtl");
+            return new ModelAndView(model, layout);
+        }, new VelocityTemplateEngine());
+
+        //get all stylist
+        get("/", (request, response) -> {
+            Map<String, Object> model = new HashMap<String, Object>();
+            model.put("stylists", Stylists.all());
+            model.put("template", "templates/splash.vtl");
             return new ModelAndView(model, layout);
         }, new VelocityTemplateEngine());
 

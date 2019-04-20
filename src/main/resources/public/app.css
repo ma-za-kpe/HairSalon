@@ -1,5 +1,5 @@
 .navbar{
-background-color: #5B1000;
+background-color: #243119;
 }
 
 .header{
@@ -8,11 +8,11 @@ font-size:30px;
 
 th{
  font-size: 70px;
- color: red;
+ color: #ACECA1;
  }
 
  table {
-   border: 1px solid #5B1000;
+   border: 1px solid #ACECA1;
  }
 
  .main{
@@ -22,10 +22,17 @@ th{
  }
 
  .add{
- background-color: #5B1000;
+ background-color: #243119;
  font-size:50px;
   color: white;
  }
+
+
+ .addd{
+  background-color: #629460;
+  font-size:50px;
+   color: white;
+  }
 
  h3{
   font-size:30px;
@@ -41,17 +48,31 @@ th{
 
 .task{
  font-size:20px;
-  color: #5B1000;
+  color: #040503;
 }
 
 
 .cat{
  font-size:40px;
-  color: #5B1000;
+ color: #040503;
 }
 
 .delete{
 background-color: #FA0000;
  font-size:20px;
+}
 
+.name{
+margin-top: 200px;
+}
+
+.main-name{
+    font-size:60px;
+  color: #040503;
+}
+
+.main-name1 {
+ font-size:60px;
+  color: #040503;
+  text-decoration: line-through;
 }
